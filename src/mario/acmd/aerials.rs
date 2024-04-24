@@ -5,6 +5,7 @@ use {
         app::{sv_animcmd::*, lua_bind::*},
         lib::lua_const::*
     },
+    smashline::*,
     smash_script::*
 };
 
@@ -84,8 +85,8 @@ unsafe extern "C" fn mario_attackairlw(fighter: &mut L2CAgentBase) {
 }
 
 pub fn install(agent: &mut smashline::Agent) {
-    agent.game_acmd("game_attackairf", mario_attackairf);
-    agent.effect_acmd("effect_attackairf", mario_attackairf_eff);
+    agent.acmd("game_attackairf", mario_attackairf, Priority::Default);
+    agent.acmd("effect_attackairf", mario_attackairf_eff, Priority::Default);
 
-    agent.game_acmd("game_attackairlw", mario_attackairlw);
+    agent.acmd("game_attackairlw", mario_attackairlw, Priority::Default);
 }

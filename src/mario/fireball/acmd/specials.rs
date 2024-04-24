@@ -5,6 +5,7 @@ use {
         app::{sv_animcmd::*, lua_bind::*},
         lib::lua_const::*
     },
+    smashline::*,
     smash_script::*
 };
 
@@ -24,5 +25,5 @@ unsafe extern "C" fn mario_fireball_regular(agent: &mut L2CAgentBase) {
 }
 
 pub fn install(agent: &mut smashline::Agent) {
-    agent.game_acmd("game_regular", mario_fireball_regular);
+    agent.acmd("game_regular", mario_fireball_regular, Priority::Default);
 }
